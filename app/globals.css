@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --sys-color: #3F5BE8;
+  --grad-from: #7FB2FF;
+  --grad-mid: #3D7BFF;
+  --grad-to: #2B4FE0;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+body {
+  background: #fff;
+  color: #1a1a2e;
+  font-family: var(--font-lato), 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-ibm), 'IBM Plex Sans', sans-serif;
+}
+
+/* Gradient animations */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sparkle-burst {
+  0%   { transform: translate(-50%, -50%) scale(0) rotate(0deg); opacity: 1; }
+  100% { transform: translate(calc(-50% + var(--tx, 0px)), calc(-50% + var(--ty, 0px))) scale(1) rotate(var(--rot, 180deg)); opacity: 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+
+/* Scroll animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.animate-on-scroll.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Wordmark gradient */
+.wordmark-gradient {
+  background: linear-gradient(135deg, var(--grad-from) 0%, var(--grad-mid) 50%, var(--grad-to) 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 5s ease infinite;
+}
+
+/* BibTeX block */
+.bibtex-block {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 0.82rem;
+  line-height: 1.75;
+  background: #f5f7ff;
+  border: 1px solid #dde2ff;
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  overflow-x: auto;
+  white-space: pre;
+  color: #1a1a2e;
+}
+
+/* Scrollbar */
+.scrollbar-thin::-webkit-scrollbar { width: 4px; height: 4px; }
+.scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+.scrollbar-thin::-webkit-scrollbar-thumb { background: #c7d2fe; border-radius: 99px; }
