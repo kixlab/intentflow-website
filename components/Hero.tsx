@@ -38,23 +38,30 @@ const AUTHORS = [
   },
 ];
 
-const BUTTONS = [
+type Button = {
+  label: string;
+  href: string;
+  icon: React.ReactNode;
+  soon?: boolean;
+};
+
+const BUTTONS: Button[] = [
   {
     label: "Paper",
     href: "/assets/intentflow_paper.pdf",
     icon: <FiFileText className="w-4 h-4" />,
   },
   {
+    label: "ACM DL",
+    href: "https://doi.org/10.1145/3800645.3812999",
+    icon: <SiAcm className="w-4 h-4" />,
+  },
+  {
     label: "arXiv",
     href: "https://arxiv.org/abs/2507.22134",
     icon: <FiExternalLink className="w-4 h-4" />,
   },
-  {
-    label: "ACM DL",
-    href: "https://doi.org/10.1145/3800645.3812999",
-    icon: <SiAcm className="w-4 h-4" />,
-    soon: true,
-  },
+  
 ];
 
 const SPARKLE_CHARS = ["✦", "✧", "⋆", "✶", "◆", "✿"];
